@@ -7,26 +7,29 @@ let processingTime
 
 ;(async () => {
   const start = process.hrtime()
-  const res = await runTests(testConfig)
+  const testResults = await runTests(testConfig)
   stop = process.hrtime(start)
-  processingTime = countTestProcessingTime(res)
-  logTestResults(res, processingTime)
+
+  const stats = testResultsStats(testResults)
+  processingTime = stats.time
+  logTestResults(testResults, stats)
+
+  if (stats.failed) process.exit(1)
 })()
 
-function countTestProcessingTime (testResults) {
-  return testResults.reduce((total, { time }) => total + time, 0)
+function testResultsStats (testResults) {
+  return testResults.reduce((a, { passed, time }) => {
+    a.time += time
+    a[passed ? 'passed' : 'failed']++
+    return a
+  }, { passed: 0, failed: 0, time: 0 })
 }
 
-function logTestResults (testResults) {
+function logTestResults (testResults, { passed, failed }) {
   testResults.forEach(({ name, passed, time }, i) => {
     const passedStr = passed ? 'passed' : 'failed'
     console.log(`#${i.toString().padEnd(8)} ${name.padEnd(50)} ${passedStr.padEnd(10)} ${time}s`)
   })
-
-  const [ passed, failed ] = testResults.reduce((a, { passed }) => {
-    a[passed ? 0 : 1]++
-    return a
-  }, [ 0, 0 ])
 
   console.log(`Test results: ${passed} passed, ${failed} failed`)
 }
@@ -36,5 +39,5 @@ process.on('exit', () => {
   console.log(`Total execution time: ${elapsed}s`)
   console.log(`Aggregated test processing time: ${processingTime}s`)
   console.log(`Parallel execution speedup: ${Math.round(processingTime / elapsed)} times faster then sequential execution`)
-  console.log(`Fetch was called ${fetch.calls} times in ${elapsed} seconds`)
+  console.log(`Fetch was called ${fetch.calls} times`)
 })
