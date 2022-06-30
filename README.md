@@ -69,6 +69,6 @@ Where:
 Test results: 200 passed, 0 failed
 Total execution time: 4.868288542s
 Aggregated test processing time: 133.51659582600004s
-Parallel execution speedup: 27 times faster then sequential execution
+Parallel execution speedup: 27 times faster than sequential execution
 Fetch was called 1500 times
 ```
