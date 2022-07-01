@@ -22,7 +22,7 @@ Where:
 
 ```bash
 % npm i
-% node .
+% npm start
 
 #1 GET /get should return query params
 #2 POST /post should return body params
