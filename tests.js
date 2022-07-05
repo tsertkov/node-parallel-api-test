@@ -70,7 +70,7 @@ export default async function runAllTests (config) {
       time,
       passed,
     }
-  }, plimit(config.parallel))
+  }, plimit(config.concurrency))
 }
 
 function parseTestParams (testParams) {

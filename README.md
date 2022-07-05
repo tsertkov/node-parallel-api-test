@@ -8,7 +8,7 @@ See `config.json` and adjust configration as necessary:
 ```json
 {
   "endpoint": "https://postman-echo.com",
-  "parallel": 30,
+  "concurrency": 30,
   "repeat": 100
 }
 ```
@@ -16,7 +16,7 @@ See `config.json` and adjust configration as necessary:
 Where:
 
 - `endpoint` - echo api endpoint (See [postman-echo-api](https://learning.postman.com/docs/developer/echo-api/))
-- `parallel` - number of tests to run in parallel
+- `concurrency` - number of tests to run in parallel
 - `repeat` - number of runs for each test to generate more load
 
 
@@ -69,7 +69,7 @@ Where:
 Test results: 200 passed, 0 failed
 Total execution time: 2.759340208s
 Aggregated test processing time: 104.48640286600002s
-Parallel execution speedup: 38 times faster then sequential execution
+Concurrent execution speedup: 38 times faster then sequential execution
 Fetch was called 1500 times
 Max fetch concurrency: 313
 ```
