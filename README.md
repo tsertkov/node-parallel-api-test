@@ -2,6 +2,8 @@
 
 Example of running api tests in parallel with masynco and p-limit.
 
+> Runs 1.5K https requests to postman-echo.com api in 3 seconds from GitHub actions 😂
+
 ## Usage
 
 See `config.json` and adjust configration as necessary:
