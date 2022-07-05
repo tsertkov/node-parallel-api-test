@@ -73,7 +73,7 @@ export default async function runAllTests (config) {
   }, plimit(config.concurrency))
 }
 
-function parseTestParams (testParams) {
+function normalizeTestParams (testParams) {
   return Array.isArray(testParams)
     ? testParams
     : [ testParams, testParams ]
@@ -81,7 +81,7 @@ function parseTestParams (testParams) {
 
 async function testGetEcho({ url }) {
   return masynco(testParams.get, async (testParams) => {
-    const [ inputParams, expectedParams ] = parseTestParams(testParams)
+    const [ inputParams, expectedParams ] = normalizeTestParams(testParams)
     const qs = new URLSearchParams(inputParams).toString()
     const urlWithParams = `${url}?${qs}`
 
@@ -94,7 +94,7 @@ async function testGetEcho({ url }) {
 
 async function testPostEcho({ url }) {
   return masynco(testParams.post, async (testParams) => {
-    const [ inputParams, expectedParams ] = parseTestParams(testParams)
+    const [ inputParams, expectedParams ] = normalizeTestParams(testParams)
 
     const res = await fetch(url, {
       method: 'post',
