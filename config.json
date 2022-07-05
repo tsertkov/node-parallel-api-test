@@ -1,5 +1,5 @@
 {
   "endpoint": "https://postman-echo.com",
-  "parallel": 30,
+  "parallel": 40,
   "repeat": 100
 }

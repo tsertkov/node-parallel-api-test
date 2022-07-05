@@ -1,7 +1,7 @@
-import { strict as assert } from 'assert'
+import { strict as assert } from 'node:assert'
 import plimit from 'p-limit'
 import masynco from 'masynco'
-import fetch from './fetch.js'
+import { fetchWithStats as fetch } from './fetch.js'
 
 const tests = [{
   name: 'GET /get should return query params',

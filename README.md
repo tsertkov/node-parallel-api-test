@@ -62,13 +62,14 @@ Where:
 #33 GET /get should return query params
 #4 passed in 0.693322083 seconds
 // ...
-#196      GET /get should return query params                passed     0.580087125s
-#197      POST /post should return body params               passed     0.73080225s
-#198      GET /get should return query params                passed     0.542092625s
-#199      POST /post should return body params               passed     0.674121375s
+#196      GET /get should return query params                passed     0.210265167s
+#197      POST /post should return body params               passed     0.238455625s
+#198      GET /get should return query params                passed     0.212632083s
+#199      POST /post should return body params               passed     0.177060084s
 Test results: 200 passed, 0 failed
-Total execution time: 4.868288542s
-Aggregated test processing time: 133.51659582600004s
-Parallel execution speedup: 27 times faster than sequential execution
+Total execution time: 2.759340208s
+Aggregated test processing time: 104.48640286600002s
+Parallel execution speedup: 38 times faster then sequential execution
 Fetch was called 1500 times
+Max fetch concurrency: 313
 ```

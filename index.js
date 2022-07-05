@@ -1,6 +1,6 @@
-import fetch from './fetch.js'
 import runTests from './tests.js'
 import testConfig from './config.json' assert {type: 'json'}
+import { fetchStats } from './fetch.js'
 
 let stop
 let processingTime
@@ -39,5 +39,8 @@ process.on('exit', () => {
   console.log(`Total execution time: ${elapsed}s`)
   console.log(`Aggregated test processing time: ${processingTime}s`)
   console.log(`Parallel execution speedup: ${Math.round(processingTime / elapsed)} times faster then sequential execution`)
-  console.log(`Fetch was called ${fetch.calls} times`)
+  console.log(`Fetch was called ${fetchStats.callCount} times`)
+
+  const maxFetchConcurrency = fetchStats.concurrency.reduce((max, c) => c > max ? c : max, 0)
+  console.log(`Max fetch concurrency: ${Math.max(maxFetchConcurrency)}`)
 })
